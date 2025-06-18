@@ -34,5 +34,6 @@ Response* p14();
 Response* p15();
 Response* p16();
 Response* p17();
+Response* p18();
 
 #endif // __PROBLEMS_H__
