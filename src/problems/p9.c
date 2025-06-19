@@ -1,6 +1,6 @@
 #include "problems.h"
 
-Response* p9() {
+Response* p9(void) {
     const int EXPECTED=31875000;
     uint_fast32_t product = 0, c = 0;
     bool found = false;

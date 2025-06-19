@@ -1,0 +1,109 @@
+[{
+		"problem_id":	1,
+		"calculated":	233168,
+		"expected":	233168,
+		"met":	"YES",
+		"elapsed":	"0.000 ns (fastest)"
+	}, {
+		"problem_id":	2,
+		"calculated":	4613732,
+		"expected":	4613732,
+		"met":	"YES",
+		"elapsed":	"0.000 ns (fastest)"
+	}, {
+		"problem_id":	3,
+		"calculated":	6857,
+		"expected":	6857,
+		"met":	"YES",
+		"elapsed":	"787.000 µs (second fastest)"
+	}, {
+		"problem_id":	4,
+		"calculated":	906609,
+		"expected":	906609,
+		"met":	"YES",
+		"elapsed":	"23.711 ms (median)"
+	}, {
+		"problem_id":	5,
+		"calculated":	232792560,
+		"expected":	232792560,
+		"met":	"YES",
+		"elapsed":	"6.465 ms (median)"
+	}, {
+		"problem_id":	6,
+		"calculated":	25164150,
+		"expected":	25164150,
+		"met":	"YES",
+		"elapsed":	"0.000 ns (fastest)"
+	}, {
+		"problem_id":	7,
+		"calculated":	104743,
+		"expected":	104743,
+		"met":	"YES",
+		"elapsed":	"1.006 ms (median)"
+	}, {
+		"problem_id":	8,
+		"calculated":	23514624000,
+		"expected":	23514624000,
+		"met":	"YES",
+		"elapsed":	"3.000 µs (second fastest)"
+	}, {
+		"problem_id":	9,
+		"calculated":	31875000,
+		"expected":	31875000,
+		"met":	"YES",
+		"elapsed":	"42.000 µs (second fastest)"
+	}, {
+		"problem_id":	10,
+		"calculated":	142913828922,
+		"expected":	142913828922,
+		"met":	"YES",
+		"elapsed":	"47.173 ms (median)"
+	}, {
+		"problem_id":	11,
+		"calculated":	70600674,
+		"expected":	70600674,
+		"met":	"YES",
+		"elapsed":	"7.000 µs (second fastest)"
+	}, {
+		"problem_id":	12,
+		"calculated":	76576500,
+		"expected":	76576500,
+		"met":	"YES",
+		"elapsed":	"50.588 ms (median)"
+	}, {
+		"problem_id":	13,
+		"calculated":	5537376230,
+		"expected":	5537376230,
+		"met":	"YES",
+		"elapsed":	"3.000 µs (second fastest)"
+	}, {
+		"problem_id":	14,
+		"calculated":	837799,
+		"expected":	837799,
+		"met":	"YES",
+		"elapsed":	"4.642 ms (median)"
+	}, {
+		"problem_id":	15,
+		"calculated":	137846528820,
+		"expected":	137846528820,
+		"met":	"YES",
+		"elapsed":	"1.000 µs (second fastest)"
+	}, {
+		"problem_id":	16,
+		"calculated":	1366,
+		"expected":	1366,
+		"met":	"YES",
+		"elapsed":	"41.000 µs (second fastest)"
+	}, {
+		"problem_id":	17,
+		"calculated":	21124,
+		"expected":	21124,
+		"met":	"YES",
+		"elapsed":	"183.000 µs (second fastest)"
+	}, {
+		"problem_id":	18,
+		"calculated":	0,
+		"expected":	7273,
+		"met":	"NO",
+		"elapsed":	"0.000 ns (fastest)"
+	}]

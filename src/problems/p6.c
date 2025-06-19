@@ -3,7 +3,7 @@
 uint_fast32_t sum_of_squares(uint_fast32_t sequence_length);
 uint_fast32_t square_of_sum(uint_fast32_t sequence_length);
 
-Response* p6() {
+Response* p6(void) {
     const uint_fast32_t EXPECTED=25164150;
 
     struct timespec start, end;

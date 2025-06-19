@@ -1,6 +1,6 @@
 #include "problems.h"
 
-Response* p12() {
+Response* p12(void) {
     const uint_fast16_t MIN_DIVISORS=500;
     const uint_fast32_t EXPECTED=76576500;
 

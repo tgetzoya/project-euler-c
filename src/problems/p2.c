@@ -1,6 +1,6 @@
 #include "problems.h"
 
-Response* p2() {
+Response* p2(void) {
 	const uint_fast32_t MAX = 4000000;
 	const uint_fast32_t EXPECTED = 4613732;
 

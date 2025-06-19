@@ -1,6 +1,6 @@
 #include "problems.h"
 
-Response* p14() {
+Response* p14(void) {
     const uint_fast32_t EXPECTED=837799;
 
     uint_fast32_t longest_chain_idx = 0;

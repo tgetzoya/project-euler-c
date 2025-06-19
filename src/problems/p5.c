@@ -1,6 +1,6 @@
 #include "problems.h"
 
-Response* p5() {
+Response* p5(void) {
     const uint_fast32_t EXPECTED=232792560;
     uint_fast32_t value = 0;
     bool all_divisible;

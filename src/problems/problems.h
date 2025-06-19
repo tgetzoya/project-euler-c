@@ -17,23 +17,23 @@
 
 extern Response* (*p_list[])(void);
 
-Response* p1();
-Response* p2();
-Response* p3();
-Response* p4();
-Response* p5();
-Response* p6();
-Response* p7();
-Response* p8();
-Response* p9();
-Response* p10();
-Response* p11();
-Response* p12();
-Response* p13();
-Response* p14();
-Response* p15();
-Response* p16();
-Response* p17();
-Response* p18();
+Response* p1(void);
+Response* p2(void);
+Response* p3(void);
+Response* p4(void);
+Response* p5(void);
+Response* p6(void);
+Response* p7(void);
+Response* p8(void);
+Response* p9(void);
+Response* p10(void);
+Response* p11(void);
+Response* p12(void);
+Response* p13(void);
+Response* p14(void);
+Response* p15(void);
+Response* p16(void);
+Response* p17(void);
+Response* p18(void);
 
 #endif // __PROBLEMS_H__

@@ -7,7 +7,7 @@ uint_fast32_t get_right_value(const uint_fast8_t grid[GRID_20x20][GRID_20x20], u
 uint_fast32_t get_left_diag_value(const uint_fast8_t grid[GRID_20x20][GRID_20x20], uint_fast8_t x, uint_fast8_t y);
 uint_fast32_t get_right_diag_value(const uint_fast8_t grid[GRID_20x20][GRID_20x20], uint_fast8_t x, uint_fast8_t y);
 
-Response* p11() {
+Response* p11(void) {
     const uint_fast32_t EXPECTED=70600674;
 
     const uint_fast8_t grid[GRID_20x20][GRID_20x20] = {

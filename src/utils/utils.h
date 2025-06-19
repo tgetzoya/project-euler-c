@@ -11,7 +11,7 @@
 #include "strings.h"
 #include "time.h"
 
-
+uint_fast16_t count_divisors (uint_fast64_t value);
 bool is_prime (uint_fast64_t value);
 bool is_palindrome(char str[]);
 

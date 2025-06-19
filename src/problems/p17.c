@@ -2,7 +2,7 @@
 
 char* number_to_word (uint_fast16_t number);
 
-Response* p17() {
+Response* p17(void) {
     const uint_fast16_t EXPECTED = 21124;
     size_t sum = 0;
     char *number_as_word;

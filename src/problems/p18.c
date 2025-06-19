@@ -1,6 +1,6 @@
 #include "problems.h"
 
-Response* p18() {
+Response* p18(void) {
     const uint_fast16_t EXPECTED = 7273;
     uint_fast16_t max_total = 0;
 
@@ -13,7 +13,7 @@ Response* p18() {
 
     string_to_number ("  42  ", &num);
 
-    printf("Number is: %lu\n", num);
+    printf("Number is: %llu\n", num);
 
     clock_gettime(CLOCK_MONOTONIC, &end);
 

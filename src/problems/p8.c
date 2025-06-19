@@ -1,6 +1,6 @@
 #include "problems.h"
 
-Response* p8() {
+Response* p8(void) {
     const uint_fast8_t SECTION_LENGTH = 13;
     const uint_fast64_t EXPECTED=23514624000;
 

@@ -1,6 +1,6 @@
 #include "problems.h"
 
-Response* p3() {
+Response* p3(void) {
 	const uint_fast64_t VALUE=600851475143;
 	const uint_fast16_t EXPECTED=6857;
 

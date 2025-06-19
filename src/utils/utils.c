@@ -40,8 +40,8 @@ uint_fast16_t count_divisors (uint_fast64_t value) {
 }
 
 bool is_palindrome(char str[]) {
-	int end = strlen(str) - 1;
-	int start = 0;
+	size_t end = strlen(str) - 1;
+	uint_fast16_t start = 0;
 
 	if (end <= 0) {
 		return false;

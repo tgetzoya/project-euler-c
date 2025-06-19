@@ -1,6 +1,6 @@
 #include "problems.h"
 
-Response* p4() {
+Response* p4(void) {
 	const uint_fast32_t EXPECTED=906609;
 	char num_as_string[10];
 	uint_fast32_t largest = 0;

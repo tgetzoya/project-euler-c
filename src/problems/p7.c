@@ -1,6 +1,6 @@
 #include "problems.h"
 
-Response* p7() {
+Response* p7(void) {
     const uint_fast16_t NUMBER_OF_PRIMES = 10001;
     const uint_fast32_t EXPECTED=104743;
 

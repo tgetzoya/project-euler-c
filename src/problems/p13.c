@@ -1,6 +1,6 @@
 #include "problems.h"
 
-Response* p13() {
+Response* p13(void) {
     const uint_fast64_t EXPECTED=5537376230;
 
     const char *NUMBERS[] = {

@@ -2,7 +2,7 @@
 
 void calculate_at_position (uint_fast64_t grid[GRID_21x21][GRID_21x21], uint_fast8_t x, uint_fast8_t y);
 
-Response* p15() {
+Response* p15(void) {
     const uint_fast64_t EXPECTED = 137846528820;
 
     uint_fast64_t grid[GRID_21x21][GRID_21x21] = {0};
