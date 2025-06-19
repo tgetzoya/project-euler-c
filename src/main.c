@@ -3,10 +3,17 @@
 int main (int argc, char **argv) {
     int opt;
     uint_fast16_t specific_problem = 0;
-    while ((opt = getopt(argc, argv, "p:")) != -1) {
+    char *out_file_path = NULL;
+    bool write_to_file = false;
+
+    while ((opt = getopt(argc, argv, "p:o:")) != -1) {
         switch (opt) {
             case 'p':
                 specific_problem = strtol(optarg, NULL, 10);
+                break;
+            case 'o':
+                out_file_path = optarg;
+                write_to_file = true;
                 break;
             case '?':
                 // getopt prints an error message for unknown options.
@@ -25,18 +32,20 @@ int main (int argc, char **argv) {
         specific_problem = 0;
     }
     
-    if (specific_problem > 0) {
-        /* Exactly 1 */
-        responses = malloc(sizeof(Response *));
-    } else {
-        responses = malloc(available_problems * sizeof(Response *));
+    if (write_to_file) {
+        if (specific_problem > 0) {
+            /* Exactly 1 */
+            responses = malloc(sizeof(Response *));
+        } else {
+            responses = malloc(available_problems * sizeof(Response *));
+        }
     }
 
     for (size_t i = (specific_problem > 0 ? specific_problem - 1 : 0); i < (specific_problem > 0 ? specific_problem : available_problems); i++) {
         response = p_list[i]();
 
         char *readable_elapsed = ns_to_readable(response->elapsed_ns);
-        printf("Problem %3zu\n\tTotal:    %llu\n\tExpected: %llu\n\tMet:      %s\n\tElapsed:  %s\n",
+        printf("Problem %3zu\n\tTotal:    %lu\n\tExpected: %lu\n\tMet:      %s\n\tElapsed:  %s\n",
             i + 1,
             response->calculated,
             response->expected,
@@ -46,50 +55,57 @@ int main (int argc, char **argv) {
 
         free(readable_elapsed);
         
-        responses[response_count++] = response;
+        if (write_to_file) {
+            responses[response_count++] = response;
+        } else {
+            response_free(response);
+        }
     }
-    
-    cJSON *json_array = cJSON_CreateArray();
-    
-    for (size_t idx = 0; idx < response_count; idx++) {
-        if (responses[idx] == NULL) continue;
-        
-        cJSON *json_obj = cJSON_CreateObject();
-        
-        char *readable_elapsed = ns_to_readable(responses[idx]->elapsed_ns);
-        
-        cJSON_AddNumberToObject(json_obj, "problem_id", idx+1);
-        cJSON_AddNumberToObject(json_obj, "calculated", responses[idx]->calculated);
-        cJSON_AddNumberToObject(json_obj, "expected", responses[idx]->expected);
-        cJSON_AddStringToObject(json_obj, "met", responses[idx]->met ? "YES" : "NO");
-        cJSON_AddStringToObject(json_obj, "elapsed", readable_elapsed);
-        
-        cJSON_AddItemToArray(json_array, json_obj);
 
-        free(readable_elapsed);
-        /* Destroy the individual objects. */
-        response_free(responses[idx]);
+    if (write_to_file && out_file_path != NULL) {
+        cJSON *json_array = cJSON_CreateArray();
+
+        for (size_t idx = 0; idx < response_count; idx++) {
+            if (responses[idx] == NULL) continue;
+
+            cJSON *json_obj = cJSON_CreateObject();
+
+            char *readable_elapsed = ns_to_readable(responses[idx]->elapsed_ns);
+
+            cJSON_AddNumberToObject(json_obj, "problem_id", idx+1);
+            cJSON_AddNumberToObject(json_obj, "calculated", responses[idx]->calculated);
+            cJSON_AddNumberToObject(json_obj, "expected", responses[idx]->expected);
+            cJSON_AddStringToObject(json_obj, "met", responses[idx]->met ? "YES" : "NO");
+            cJSON_AddStringToObject(json_obj, "elapsed", readable_elapsed);
+
+            cJSON_AddItemToArray(json_array, json_obj);
+
+            free(readable_elapsed);
+            /* Destroy the individual objects. */
+            response_free(responses[idx]);
+        }
+
+        /* Then destroy the array. */
+        free(responses);
+
+        char *json_str = cJSON_Print(json_array);
+
+        const char *path = "/home/tgetzoyan/workspace/project-euler/files/run_results/free-bsd";
+        time_t now = time(NULL);
+
+        char file_name[1000];
+        snprintf(file_name, sizeof(file_name), "%s/%s-%ld.json", path, OS, now);
+
+        if (ensure_path_exists(path) == 0) {
+            printf("Directory path exists or was created successfully.\n");
+        } else {
+            fprintf(stderr, "Failed to create directory path.\n");
+        }
+
+        write_json_to_file(file_name, json_str);
+
+        cJSON_Delete(json_array);
     }
-    
-    /* Then destroy the array. */
-    free(responses);
-    
-    char *json_str = cJSON_Print(json_array);
 
-    const char *path = "";
-    time_t now = time(NULL);
-    
-    char file_name[1000];
-    snprintf(file_name, sizeof(file_name), "%s/%s-%ld.json", path, OS, now);
-
-    if (ensure_path_exists(path) == 0) {
-        printf("Directory path exists or was created successfully.\n");
-    } else {
-        fprintf(stderr, "Failed to create directory path.\n");
-    }
-    
-    write_json_to_file(file_name, json_str);
-    
-    cJSON_Delete(json_array);
     return 0;
 }

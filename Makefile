@@ -6,7 +6,7 @@ SRCS	!=	find src -name '*.c'
 # Build flags
 CFLAGS?	=	-O2 -pipe
 CFLAGS	+=	-Wall -Wextra -flto -I/usr/local/include
-LDFLAGS	+=	-flto -L/usr/local/lib -lgmp
+LDFLAGS	+=	-flto -L/usr/local/lib -lgmp -lcjson
 MK_MAN	=	no
 
 # Include FreeBSD build framework

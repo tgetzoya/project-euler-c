@@ -7,13 +7,17 @@ Response* p18(void) {
     struct timespec start, end;
     clock_gettime(CLOCK_MONOTONIC, &start);
 
-    // read_triangle_file("./files/p18.txt");
-
     uint_fast64_t num = 0;
 
-    string_to_number ("  42  ", &num);
 
-    printf("Number is: %llu\n", num);
+
+    // char *result = filter_string_to_digits(" udsyaoifu 42 @#$@#$@#$@#$@# ");
+    //
+    // printf("filter_string_to_digits(\"  42  \") result: %s\n", result);
+    //
+    // string_to_number (result, &num);
+    //
+    // free(result);
 
     clock_gettime(CLOCK_MONOTONIC, &end);
 

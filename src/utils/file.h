@@ -20,7 +20,7 @@
 
 uint_fast32_t create_directory(const char *path);
 uint_fast32_t ensure_path_exists(const char *path);
-char* read_triangle_file(const char *path);
+char** read_file(const char *path);
 void write_json_to_file(const char *path, const char *content);
 
 #endif
