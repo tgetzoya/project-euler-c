@@ -65,13 +65,56 @@ uint_fast32_t ensure_path_exists(const char *path) {
 }
 
 
-char** read_file(const char *path) {
-    FILE *file = fopen(path);
+uint16_t read_file(const char *path, char ***lines_out) {
+    FILE *file = fopen(path, "rb");
     if (!file) {
         perror("read_file could not open file");
+        return 0;
     }
 
-	return path;
+    char *line = NULL;
+    size_t len = 0;
+    ssize_t read;
+    uint16_t line_count = 0;
+    uint16_t capacity = 8;
+
+    char **lines = malloc(sizeof(char*) * capacity);
+    if (!lines) {
+        perror("malloc failed");
+        fclose(file);
+        return 0;
+    }
+
+    while ((read = getline(&line, &len, file)) != -1) {
+        if (line[read - 1] == '\n') {
+            line[read - 1] = '\0';
+        }
+
+        if (line_count >= capacity) {
+            capacity *= 2;
+            char **tmp = realloc(lines, sizeof(char*) * capacity);
+            if (!tmp) {
+                perror("realloc failed");
+                break;
+            }
+            lines = tmp;
+        }
+
+        // Store a copy of the line
+        lines[line_count] = strdup(line);
+        if (!lines[line_count]) {
+            perror("strdup failed");
+            break;
+        }
+
+        line_count++;
+    }
+
+    free(line);
+    fclose(file);
+
+    *lines_out = lines;
+    return line_count;
 }
 
 void write_json_to_file(const char *path, const char *content) {

@@ -9,15 +9,19 @@ Response* p18(void) {
 
     uint_fast64_t num = 0;
 
+    char ** lines;
+    uint16_t line_count = read_file("/home/tgetzoyan/CLionProjects/project-euler-c/files/p18.txt", &lines);
 
+    if (lines != NULL && line_count > 0) {
+        for (int idx = 0; idx < line_count; idx++) {
+            printf("line: %s\n", lines[idx]);
+            free(lines[idx]);
+        }
 
-    // char *result = filter_string_to_digits(" udsyaoifu 42 @#$@#$@#$@#$@# ");
-    //
-    // printf("filter_string_to_digits(\"  42  \") result: %s\n", result);
-    //
-    // string_to_number (result, &num);
-    //
-    // free(result);
+        free(lines);
+    } else {
+        fprintf(stderr, "Failed to read file or file was empty.\n");
+    }
 
     clock_gettime(CLOCK_MONOTONIC, &end);
 
