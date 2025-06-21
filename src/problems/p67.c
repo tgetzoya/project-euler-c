@@ -1,8 +1,8 @@
 #include "problems.h"
 
 
-Response* p18(void) {
-    const uint_fast16_t EXPECTED = 1074;
+Response* p67(void) {
+    const uint_fast16_t EXPECTED = 7273;
     uint_fast16_t max_total = 0;
 
     char ** lines;
@@ -16,7 +16,7 @@ Response* p18(void) {
     struct timespec start, end;
     clock_gettime(CLOCK_MONOTONIC, &start);
 
-    uint16_t line_count = read_file("/home/tgetzoyan/CLionProjects/project-euler-c/files/p18.txt", &lines);
+    uint16_t line_count = read_file("/home/tgetzoyan/CLionProjects/project-euler-c/files/p67.txt", &lines);
 
     int_array = calloc(line_count, sizeof(uint_fast64_t *));
     if (!int_array) {

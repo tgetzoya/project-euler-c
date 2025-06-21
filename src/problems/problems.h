@@ -36,4 +36,6 @@ Response* p16(void);
 Response* p17(void);
 Response* p18(void);
 
+Response* p67(void);
+
 #endif // __PROBLEMS_H__

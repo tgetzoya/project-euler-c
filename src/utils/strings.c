@@ -1,10 +1,49 @@
 #include "strings.h"
 
-char* filter_string_to_digits (const char *in) {
+char **split_string(const char *in, char delim, int *out_count) {
+    if (!in || !out_count) return NULL;
+
+    char *str = strdup(in);
+    if (!str) return NULL;
+
+    char **tokens = NULL;
+    int count = 0;
+
+    char delim_str[2] = {delim, '\0'};
+    char *token = strtok(str, delim_str);
+
+    while (token != NULL) {
+        char **new_tokens = realloc(tokens, sizeof(char *) * (count + 1));
+        if (!new_tokens) {
+            for (int i = 0; i < count; i++) free(tokens[i]);
+            free(tokens);
+            free(str);
+            return NULL;
+        }
+
+        tokens = new_tokens;
+        tokens[count] = strdup(token);
+        if (!tokens[count]) {
+            for (int i = 0; i < count; i++) free(tokens[i]);
+            free(tokens);
+            free(str);
+            return NULL;
+        }
+
+        count++;
+        token = strtok(NULL, delim_str);
+    }
+
+    free(str);
+    *out_count = count;
+    return tokens;
+}
+
+char *filter_string_to_digits(const char *in) {
     size_t count = 0;
 
     for (const char *ch = in; *ch; ch++) {
-        if (isdigit((unsigned char)*ch)) {
+        if (isdigit((unsigned char) *ch)) {
             count++;
         }
     }
@@ -17,19 +56,17 @@ char* filter_string_to_digits (const char *in) {
 
     char *copy = out;
     for (const char *ch = in; *ch; ch++) {
-        if (isdigit((unsigned char)*ch)) {
+        if (isdigit((unsigned char) *ch)) {
             *copy++ = *ch;
         }
     }
 
     *copy = '\0';
 
-    printf("Returning %s\n", out);
-
     return out;
 }
 
-uint_fast64_t string_to_number(char* in, uint_fast64_t* out) {
+uint_fast64_t string_to_number(char *in, uint_fast64_t *out) {
     if (in == NULL || out == NULL) return 255;
 
     errno = 0;
@@ -46,7 +83,7 @@ uint_fast64_t string_to_number(char* in, uint_fast64_t* out) {
         return 2;
     }
 
-    *out = (uint_fast64_t)val;
+    *out = (uint_fast64_t) val;
 
     return 0;
 }
