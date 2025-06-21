@@ -90,13 +90,12 @@ int main (int argc, char **argv) {
 
         char *json_str = cJSON_Print(json_array);
 
-        const char *path = "/home/tgetzoyan/workspace/project-euler/files/run_results/free-bsd";
         time_t now = time(NULL);
 
         char file_name[1000];
-        snprintf(file_name, sizeof(file_name), "%s/%s-%ld.json", path, OS, now);
+        snprintf(file_name, sizeof(file_name), "%s/%s-%ld.json", out_file_path, OS, now);
 
-        if (ensure_path_exists(path) == 0) {
+        if (ensure_path_exists(out_file_path) == 0) {
             printf("Directory path exists or was created successfully.\n");
         } else {
             fprintf(stderr, "Failed to create directory path.\n");
