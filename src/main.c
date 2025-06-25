@@ -24,7 +24,7 @@ int main (int argc, char **argv) {
 
     size_t available_problems = sizeof(p_list) / sizeof(p_list[0]);
     
-    Response **responses;
+    Response **responses = NULL;
     Response *response;
     size_t response_count = 0;
 
@@ -45,7 +45,7 @@ int main (int argc, char **argv) {
         response = p_list[i]();
 
         char *readable_elapsed = ns_to_readable(response->elapsed_ns);
-        printf("Problem %3zu\n\tTotal:    %lu\n\tExpected: %lu\n\tMet:      %s\n\tElapsed:  %s\n",
+        printf("Problem %3zu\n\tTotal:    %llu\n\tExpected: %llu\n\tMet:      %s\n\tElapsed:  %s\n",
             i + 1,
             response->calculated,
             response->expected,

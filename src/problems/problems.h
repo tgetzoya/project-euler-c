@@ -35,6 +35,8 @@ Response* p15(void);
 Response* p16(void);
 Response* p17(void);
 Response* p18(void);
+Response* p19(void);
+Response* p20(void);
 
 Response* p67(void);
 

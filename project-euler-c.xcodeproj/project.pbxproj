@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56876AB42E0B8AB800337D07 /* p19.c in Sources */ = {isa = PBXBuildFile; fileRef = 56876AB32E0B8AB800337D07 /* p19.c */; };
+		56876AB62E0B92DD00337D07 /* p20.c in Sources */ = {isa = PBXBuildFile; fileRef = 56876AB52E0B92DD00337D07 /* p20.c */; };
 		56E5B3212E03A5C0009249CD /* p13.c in Sources */ = {isa = PBXBuildFile; fileRef = 56E5B3082E03A5C0009249CD /* p13.c */; };
 		56E5B3222E03A5C0009249CD /* response.c in Sources */ = {isa = PBXBuildFile; fileRef = 56E5B3112E03A5C0009249CD /* response.c */; };
 		56E5B3232E03A5C0009249CD /* p2.c in Sources */ = {isa = PBXBuildFile; fileRef = 56E5B2FD2E03A5C0009249CD /* p2.c */; };
@@ -49,6 +51,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		56876AB32E0B8AB800337D07 /* p19.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = p19.c; sourceTree = "<group>"; };
+		56876AB52E0B92DD00337D07 /* p20.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = p20.c; sourceTree = "<group>"; };
 		56E5B2F22E03A577009249CD /* project-euler-c */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "project-euler-c"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56E5B2FC2E03A5C0009249CD /* p1.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = p1.c; sourceTree = "<group>"; };
 		56E5B2FD2E03A5C0009249CD /* p2.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = p2.c; sourceTree = "<group>"; };
@@ -85,6 +89,7 @@
 		56E5B31F2E03A5C0009249CD /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		56E5B33B2E03A82F009249CD /* libgmp.10.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libgmp.10.dylib; path = ../../../../../opt/homebrew/Cellar/gmp/6.3.0/lib/libgmp.10.dylib; sourceTree = "<group>"; };
 		56E5B33D2E03AE88009249CD /* libcjson.1.7.18.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcjson.1.7.18.dylib; path = ../../../../../opt/homebrew/Cellar/cjson/1.7.18/lib/libcjson.1.7.18.dylib; sourceTree = "<group>"; };
+		56FE51E52E0A2CDC004A587A /* project-euler-c.profdata */ = {isa = PBXFileReference; lastKnownFileType = file; path = "project-euler-c.profdata"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +111,7 @@
 				56E5B3202E03A5C0009249CD /* src */,
 				56E5B33A2E03A82F009249CD /* Frameworks */,
 				56E5B2F32E03A577009249CD /* Products */,
+				56FE51E62E0A2CDC004A587A /* OptimizationProfiles */,
 			);
 			sourceTree = "<group>";
 		};
@@ -138,6 +144,8 @@
 				56E5B30B2E03A5C0009249CD /* p16.c */,
 				56E5B30C2E03A5C0009249CD /* p17.c */,
 				56E5B30D2E03A5C0009249CD /* p18.c */,
+				56876AB32E0B8AB800337D07 /* p19.c */,
+				56876AB52E0B92DD00337D07 /* p20.c */,
 				56E5B30E2E03A5C0009249CD /* problems.h */,
 			);
 			path = problems;
@@ -188,6 +196,14 @@
 				56E5B33B2E03A82F009249CD /* libgmp.10.dylib */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		56FE51E62E0A2CDC004A587A /* OptimizationProfiles */ = {
+			isa = PBXGroup;
+			children = (
+				56FE51E52E0A2CDC004A587A /* project-euler-c.profdata */,
+			);
+			path = OptimizationProfiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,6 +279,7 @@
 				56E5B32B2E03A5C0009249CD /* strings.c in Sources */,
 				56E5B32C2E03A5C0009249CD /* p10.c in Sources */,
 				56E5B32D2E03A5C0009249CD /* p8.c in Sources */,
+				56876AB42E0B8AB800337D07 /* p19.c in Sources */,
 				56E5B32E2E03A5C0009249CD /* p15.c in Sources */,
 				56E5B32F2E03A5C0009249CD /* p9.c in Sources */,
 				56E5B3302E03A5C0009249CD /* p11.c in Sources */,
@@ -273,6 +290,7 @@
 				56E5B3352E03A5C0009249CD /* factors.c in Sources */,
 				56E5B3362E03A5C0009249CD /* utils.c in Sources */,
 				56E5B3372E03A5C0009249CD /* p17.c in Sources */,
+				56876AB62E0B92DD00337D07 /* p20.c in Sources */,
 				56E5B3382E03A5C0009249CD /* p4.c in Sources */,
 				56E5B3392E03A5C0009249CD /* p3.c in Sources */,
 			);
@@ -399,6 +417,7 @@
 		56E5B2FA2E03A577009249CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_STYLE = Automatic;
 				"HEADER_SEARCH_PATHS[arch=*]" = /opt/homebrew/include;
 				LIBRARY_SEARCH_PATHS = (
@@ -414,6 +433,7 @@
 		56E5B2FB2E03A577009249CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_STYLE = Automatic;
 				"HEADER_SEARCH_PATHS[arch=*]" = /opt/homebrew/include;
 				LIBRARY_SEARCH_PATHS = (

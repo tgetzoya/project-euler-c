@@ -16,7 +16,7 @@ Response* p18(void) {
     struct timespec start, end;
     clock_gettime(CLOCK_MONOTONIC, &start);
 
-    uint16_t line_count = read_file("/home/tgetzoyan/CLionProjects/project-euler-c/files/p18.txt", &lines);
+    uint16_t line_count = read_file("/Users/thomasgetzoyan/Documents/workspace/project-euler-c/files/p18.txt", &lines);
 
     int_array = calloc(line_count, sizeof(uint_fast64_t *));
     if (!int_array) {
