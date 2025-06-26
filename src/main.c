@@ -2,18 +2,20 @@
 
 int main (int argc, char **argv) {
     int opt;
-    uint_fast16_t specific_problem = 0;
-    char *out_file_path = NULL;
-    bool write_to_file = false;
+    
+    Config config;
 
-    while ((opt = getopt(argc, argv, "p:o:")) != -1) {
+    while ((opt = getopt(argc, argv, "f:p:o:")) != -1) {
         switch (opt) {
+            case 'f':
+                config.base_file_path = strdup(optarg);
+                break;
             case 'p':
-                specific_problem = strtol(optarg, NULL, 10);
+                config.specific_problem = strtol(optarg, NULL, 10);
                 break;
             case 'o':
-                out_file_path = optarg;
-                write_to_file = true;
+                config.out_file_path = strdup(optarg);
+                config.write_to_file = true;
                 break;
             case '?':
                 // getopt prints an error message for unknown options.
@@ -21,6 +23,8 @@ int main (int argc, char **argv) {
                 break;
         }
     }
+    
+    init_config(&config);
 
     size_t available_problems = sizeof(p_list) / sizeof(p_list[0]);
     
@@ -28,12 +32,12 @@ int main (int argc, char **argv) {
     Response *response;
     size_t response_count = 0;
 
-    if (specific_problem > available_problems) {
-        specific_problem = 0;
+    if (config.specific_problem > available_problems) {
+        config.specific_problem = 0;
     }
     
-    if (write_to_file) {
-        if (specific_problem > 0) {
+    if (config.write_to_file) {
+        if (config.specific_problem > 0) {
             /* Exactly 1 */
             responses = malloc(sizeof(Response *));
         } else {
@@ -41,7 +45,7 @@ int main (int argc, char **argv) {
         }
     }
 
-    for (size_t i = (specific_problem > 0 ? specific_problem - 1 : 0); i < (specific_problem > 0 ? specific_problem : available_problems); i++) {
+    for (size_t i = (config.specific_problem > 0 ? config.specific_problem - 1 : 0); i < (config.specific_problem > 0 ? config.specific_problem : available_problems); i++) {
         response = p_list[i]();
 
         char *readable_elapsed = ns_to_readable(response->elapsed_ns);
@@ -55,14 +59,14 @@ int main (int argc, char **argv) {
 
         free(readable_elapsed);
         
-        if (write_to_file) {
+        if (config.write_to_file) {
             responses[response_count++] = response;
         } else {
             response_free(response);
         }
     }
 
-    if (write_to_file && out_file_path != NULL) {
+    if (config.write_to_file && config.out_file_path != NULL) {
         cJSON *json_array = cJSON_CreateArray();
 
         for (size_t idx = 0; idx < response_count; idx++) {
@@ -93,9 +97,9 @@ int main (int argc, char **argv) {
         time_t now = time(NULL);
 
         char file_name[1000];
-        snprintf(file_name, sizeof(file_name), "%s/%s-%ld.json", out_file_path, OS, now);
+        snprintf(file_name, sizeof(file_name), "%s/%s-%ld.json", config.out_file_path, OS, now);
 
-        if (ensure_path_exists(out_file_path) == 0) {
+        if (ensure_path_exists(config.out_file_path) == 0) {
             printf("Directory path exists or was created successfully.\n");
         } else {
             fprintf(stderr, "Failed to create directory path.\n");
@@ -105,6 +109,7 @@ int main (int argc, char **argv) {
 
         cJSON_Delete(json_array);
     }
-
+    
+    free_config();
     return 0;
 }

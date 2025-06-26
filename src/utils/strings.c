@@ -1,30 +1,55 @@
 #include "strings.h"
 
-char **split_string(const char *in, char delim, int *out_count) {
-    if (!in || !out_count) return NULL;
+void remove_quotes(char *str) {
+    char *read = str;
+    char *write = str;
+
+    while (*read) {
+        if (*read != '"' && *read != '\'') {
+            *write++ = *read;
+        }
+        read++;
+    }
+    *write = '\0';
+}
+
+char **split_string(const char *in, char delim, uint_fast16_t *out_count) {
+    if (!in || !out_count) {
+        return NULL;
+    }
 
     char *str = strdup(in);
-    if (!str) return NULL;
+    if (!str) {
+        return NULL;
+    }
 
-    char **tokens = NULL;
-    int count = 0;
+    size_t capacity = 8;
+    size_t count = 0;
+    char **tokens = malloc(sizeof(char *) * capacity);
+    if (!tokens) {
+        free(str);
+        return NULL;
+    }
 
     char delim_str[2] = {delim, '\0'};
     char *token = strtok(str, delim_str);
 
     while (token != NULL) {
-        char **new_tokens = realloc(tokens, sizeof(char *) * (count + 1));
-        if (!new_tokens) {
-            for (int i = 0; i < count; i++) free(tokens[i]);
-            free(tokens);
-            free(str);
-            return NULL;
+        if (count == capacity) {
+            capacity *= 2;
+            char **new_tokens = realloc(tokens, sizeof(char *) * capacity);
+            if (!new_tokens) {
+                for (size_t i = 0; i < count; i++) free(tokens[i]);
+                free(tokens);
+                free(str);
+                return NULL;
+            }
+            tokens = new_tokens;
         }
 
-        tokens = new_tokens;
         tokens[count] = strdup(token);
         if (!tokens[count]) {
-            for (int i = 0; i < count; i++) free(tokens[i]);
+            for (size_t i = 0; i < count; i++) free(tokens[i]);
             free(tokens);
             free(str);
             return NULL;
@@ -35,9 +60,10 @@ char **split_string(const char *in, char delim, int *out_count) {
     }
 
     free(str);
-    *out_count = count;
+    *out_count = (uint_fast16_t)count;
     return tokens;
 }
+
 
 char *filter_string_to_digits(const char *in) {
     size_t count = 0;

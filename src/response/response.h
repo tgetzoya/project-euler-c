@@ -15,5 +15,6 @@ typedef struct {
 
 Response* response_init(uint_fast64_t calculated, uint_fast64_t expected, bool met, struct timespec start, struct timespec end);
 void response_free(Response *response);
+Response* static_response_fail(void);
 
 #endif // __RESPONSE_H__

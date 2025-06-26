@@ -25,3 +25,11 @@ Response* response_init(uint_fast64_t calculated, uint_fast64_t expected, bool m
 void response_free(Response *response) {
     free(response);
 }
+
+Response* static_response_fail(void) {
+    struct timespec start, end;
+    clock_gettime(CLOCK_MONOTONIC, &start);
+    clock_gettime(CLOCK_MONOTONIC, &end);
+    
+    return response_init(0, 1, false, start, end);
+}

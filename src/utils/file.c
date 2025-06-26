@@ -65,8 +65,11 @@ uint_fast32_t ensure_path_exists(const char *path) {
 }
 
 
-uint16_t read_file(const char *path, char ***lines_out) {
-    FILE *file = fopen(path, "rb");
+uint16_t read_file(const char *path, const char *file_name, char ***lines_out) {
+    char full_path[1000];
+    snprintf(full_path, sizeof(full_path), "%s/%s", path, file_name);
+    
+    FILE *file = fopen(full_path, "rb");
     if (!file) {
         perror("read_file could not open file");
         return 0;

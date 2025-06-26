@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		56876AB42E0B8AB800337D07 /* p19.c in Sources */ = {isa = PBXBuildFile; fileRef = 56876AB32E0B8AB800337D07 /* p19.c */; };
 		56876AB62E0B92DD00337D07 /* p20.c in Sources */ = {isa = PBXBuildFile; fileRef = 56876AB52E0B92DD00337D07 /* p20.c */; };
+		56876AB82E0CD86400337D07 /* p21.c in Sources */ = {isa = PBXBuildFile; fileRef = 56876AB72E0CD86400337D07 /* p21.c */; };
+		56876AC02E0CEACB00337D07 /* p22.c in Sources */ = {isa = PBXBuildFile; fileRef = 56876ABF2E0CEACB00337D07 /* p22.c */; };
 		56E5B3212E03A5C0009249CD /* p13.c in Sources */ = {isa = PBXBuildFile; fileRef = 56E5B3082E03A5C0009249CD /* p13.c */; };
 		56E5B3222E03A5C0009249CD /* response.c in Sources */ = {isa = PBXBuildFile; fileRef = 56E5B3112E03A5C0009249CD /* response.c */; };
 		56E5B3232E03A5C0009249CD /* p2.c in Sources */ = {isa = PBXBuildFile; fileRef = 56E5B2FD2E03A5C0009249CD /* p2.c */; };
@@ -53,6 +55,8 @@
 /* Begin PBXFileReference section */
 		56876AB32E0B8AB800337D07 /* p19.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = p19.c; sourceTree = "<group>"; };
 		56876AB52E0B92DD00337D07 /* p20.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = p20.c; sourceTree = "<group>"; };
+		56876AB72E0CD86400337D07 /* p21.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = p21.c; sourceTree = "<group>"; };
+		56876ABF2E0CEACB00337D07 /* p22.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = p22.c; sourceTree = "<group>"; };
 		56E5B2F22E03A577009249CD /* project-euler-c */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "project-euler-c"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56E5B2FC2E03A5C0009249CD /* p1.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = p1.c; sourceTree = "<group>"; };
 		56E5B2FD2E03A5C0009249CD /* p2.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = p2.c; sourceTree = "<group>"; };
@@ -91,6 +95,14 @@
 		56E5B33D2E03AE88009249CD /* libcjson.1.7.18.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcjson.1.7.18.dylib; path = ../../../../../opt/homebrew/Cellar/cjson/1.7.18/lib/libcjson.1.7.18.dylib; sourceTree = "<group>"; };
 		56FE51E52E0A2CDC004A587A /* project-euler-c.profdata */ = {isa = PBXFileReference; lastKnownFileType = file; path = "project-euler-c.profdata"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		56876AB92E0CE3BF00337D07 /* config */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = config;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		56E5B2EF2E03A577009249CD /* Frameworks */ = {
@@ -144,8 +156,10 @@
 				56E5B30B2E03A5C0009249CD /* p16.c */,
 				56E5B30C2E03A5C0009249CD /* p17.c */,
 				56E5B30D2E03A5C0009249CD /* p18.c */,
+				56876ABF2E0CEACB00337D07 /* p22.c */,
 				56876AB32E0B8AB800337D07 /* p19.c */,
 				56876AB52E0B92DD00337D07 /* p20.c */,
+				56876AB72E0CD86400337D07 /* p21.c */,
 				56E5B30E2E03A5C0009249CD /* problems.h */,
 			);
 			path = problems;
@@ -180,6 +194,7 @@
 		56E5B3202E03A5C0009249CD /* src */ = {
 			isa = PBXGroup;
 			children = (
+				56876AB92E0CE3BF00337D07 /* config */,
 				56E5B30F2E03A5C0009249CD /* problems */,
 				56E5B3122E03A5C0009249CD /* response */,
 				56E5B31D2E03A5C0009249CD /* utils */,
@@ -220,6 +235,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				56876AB92E0CE3BF00337D07 /* config */,
 			);
 			name = "project-euler-c";
 			packageProductDependencies = (
@@ -287,9 +305,11 @@
 				56E5B3322E03A5C0009249CD /* p6.c in Sources */,
 				56E5B3332E03A5C0009249CD /* file.c in Sources */,
 				56E5B3342E03A5C0009249CD /* main.c in Sources */,
+				56876AC02E0CEACB00337D07 /* p22.c in Sources */,
 				56E5B3352E03A5C0009249CD /* factors.c in Sources */,
 				56E5B3362E03A5C0009249CD /* utils.c in Sources */,
 				56E5B3372E03A5C0009249CD /* p17.c in Sources */,
+				56876AB82E0CD86400337D07 /* p21.c in Sources */,
 				56876AB62E0B92DD00337D07 /* p20.c in Sources */,
 				56E5B3382E03A5C0009249CD /* p4.c in Sources */,
 				56E5B3392E03A5C0009249CD /* p3.c in Sources */,

@@ -12,6 +12,7 @@
 #include <limits.h>
 #include <gmp.h>
 
+#include "../config/config.h"
 #include "../response/response.h"
 #include "../utils/utils.h"
 
@@ -37,6 +38,8 @@ Response* p17(void);
 Response* p18(void);
 Response* p19(void);
 Response* p20(void);
+Response* p21(void);
+Response* p22(void);
 
 Response* p67(void);
 

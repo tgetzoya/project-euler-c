@@ -12,11 +12,18 @@ Response* p18(void) {
     uint_fast64_t *int_row;
 
     int count = 0;
+    
+    Config *config = get_config();
+    
+    if (config->base_file_path == NULL) {
+        perror("No base file path given");
+        return static_response_fail();
+    }
 
     struct timespec start, end;
     clock_gettime(CLOCK_MONOTONIC, &start);
 
-    uint16_t line_count = read_file("/Users/thomasgetzoyan/Documents/workspace/project-euler-c/files/p18.txt", &lines);
+    uint16_t line_count = read_file(config->base_file_path, "p18.txt", &lines);
 
     int_array = calloc(line_count, sizeof(uint_fast64_t *));
     if (!int_array) {
