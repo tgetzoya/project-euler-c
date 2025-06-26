@@ -1,7 +1,7 @@
 #include "problems.h"
 
-Response* p10(void) {
-    const uint_fast64_t EXPECTED=142913828922;
+Response *p10(void) {
+    const uint_fast64_t EXPECTED = 142913828922;
 
     uint_fast64_t sum = 0;
 
@@ -9,7 +9,7 @@ Response* p10(void) {
     clock_gettime(CLOCK_MONOTONIC, &start);
 
     for (uint_fast32_t i = 0; i < 2000000; i++) {
-        if (is_prime(i)){
+        if (is_prime(i)) {
             sum += i;
         }
     }

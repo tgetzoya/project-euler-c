@@ -1,6 +1,6 @@
 #include "problems.h"
 
-Response* p16(void) {
+Response *p16(void) {
     const uint_fast16_t EXPECTED = 1366;
     uint_fast16_t sum = 0;
 

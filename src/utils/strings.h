@@ -12,7 +12,9 @@
 void remove_quotes(char *str);
 
 char **split_string(const char *in, char delim, uint_fast16_t *out_count);
-char* filter_string_to_digits (const char *in);
-uint_fast64_t string_to_number (char* in, uint_fast64_t* out);
+
+char *filter_string_to_digits(const char *in);
+
+uint_fast64_t string_to_number(char *in, uint_fast64_t *out);
 
 #endif

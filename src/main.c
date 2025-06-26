@@ -1,9 +1,14 @@
 #include "includes.h"
 
-int main (int argc, char **argv) {
+int main(int argc, char **argv) {
     int opt;
-    
-    Config config;
+
+    Config config = {
+            .base_file_path = NULL,
+            .out_file_path = NULL,
+            .specific_problem = 0,
+            .write_to_file = false
+    };
 
     while ((opt = getopt(argc, argv, "f:p:o:")) != -1) {
         switch (opt) {
@@ -23,11 +28,11 @@ int main (int argc, char **argv) {
                 break;
         }
     }
-    
+
     init_config(&config);
 
     size_t available_problems = sizeof(p_list) / sizeof(p_list[0]);
-    
+
     Response **responses = NULL;
     Response *response;
     size_t response_count = 0;
@@ -35,7 +40,7 @@ int main (int argc, char **argv) {
     if (config.specific_problem > available_problems) {
         config.specific_problem = 0;
     }
-    
+
     if (config.write_to_file) {
         if (config.specific_problem > 0) {
             /* Exactly 1 */
@@ -45,20 +50,21 @@ int main (int argc, char **argv) {
         }
     }
 
-    for (size_t i = (config.specific_problem > 0 ? config.specific_problem - 1 : 0); i < (config.specific_problem > 0 ? config.specific_problem : available_problems); i++) {
+    for (size_t i = (config.specific_problem > 0 ? config.specific_problem - 1 : 0);
+         i < (config.specific_problem > 0 ? config.specific_problem : available_problems); i++) {
         response = p_list[i]();
 
         char *readable_elapsed = ns_to_readable(response->elapsed_ns);
-        printf("Problem %3zu\n\tTotal:    %llu\n\tExpected: %llu\n\tMet:      %s\n\tElapsed:  %s\n",
-            i + 1,
-            response->calculated,
-            response->expected,
-            response->met ? "\033[32mYES\033[0m" : "\033[31mNO\033[0m",
-            readable_elapsed
+        printf(OUTPUT_LINE,
+               i + 1,
+               response->calculated,
+               response->expected,
+               response->met ? "\033[32mYES\033[0m" : "\033[31mNO\033[0m",
+               readable_elapsed
         );
 
         free(readable_elapsed);
-        
+
         if (config.write_to_file) {
             responses[response_count++] = response;
         } else {
@@ -76,7 +82,7 @@ int main (int argc, char **argv) {
 
             char *readable_elapsed = ns_to_readable(responses[idx]->elapsed_ns);
 
-            cJSON_AddNumberToObject(json_obj, "problem_id", idx+1);
+            cJSON_AddNumberToObject(json_obj, "problem_id", idx + 1);
             cJSON_AddNumberToObject(json_obj, "calculated", responses[idx]->calculated);
             cJSON_AddNumberToObject(json_obj, "expected", responses[idx]->expected);
             cJSON_AddStringToObject(json_obj, "met", responses[idx]->met ? "YES" : "NO");
@@ -109,7 +115,7 @@ int main (int argc, char **argv) {
 
         cJSON_Delete(json_array);
     }
-    
+
     free_config();
     return 0;
 }

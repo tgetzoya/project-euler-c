@@ -1,23 +1,23 @@
 #include "factors.h"
 
-int compare_factors (const void *a, const void *b) {
-    uint_fast64_t arg1 = *(const uint_fast64_t *)a;
-    uint_fast64_t arg2 = *(const uint_fast64_t *)b;
+int compare_factors(const void *a, const void *b) {
+    uint_fast64_t arg1 = *(const uint_fast64_t *) a;
+    uint_fast64_t arg2 = *(const uint_fast64_t *) b;
     return (arg1 > arg2) - (arg1 < arg2);
 }
 
-Factors* get_fast_factors (uint_fast64_t value){
+Factors *get_fast_factors(uint_fast64_t value) {
     return get_factors(value, false, false);
 }
 
-Factors* get_factors (uint_fast64_t value, bool include_one_and_value, bool do_sort) {
+Factors *get_factors(uint_fast64_t value, bool include_one_and_value, bool do_sort) {
     const size_t size_of_variable = sizeof(uint_fast64_t);
 
     size_t capacity = 10;
     size_t element_count = 0;
 
     Factors *result;
-    uint_fast64_t *factors = calloc(capacity,  size_of_variable);
+    uint_fast64_t *factors = calloc(capacity, size_of_variable);
     uint_fast64_t *tmp;
 
     if (factors == NULL) {

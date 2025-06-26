@@ -60,7 +60,7 @@ char **split_string(const char *in, char delim, uint_fast16_t *out_count) {
     }
 
     free(str);
-    *out_count = (uint_fast16_t)count;
+    *out_count = (uint_fast16_t) count;
     return tokens;
 }
 

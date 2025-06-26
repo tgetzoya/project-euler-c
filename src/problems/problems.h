@@ -16,31 +16,52 @@
 #include "../response/response.h"
 #include "../utils/utils.h"
 
-extern Response* (*p_list[])(void);
+extern Response *(*p_list[])(void);
 
-Response* p1(void);
-Response* p2(void);
-Response* p3(void);
-Response* p4(void);
-Response* p5(void);
-Response* p6(void);
-Response* p7(void);
-Response* p8(void);
-Response* p9(void);
-Response* p10(void);
-Response* p11(void);
-Response* p12(void);
-Response* p13(void);
-Response* p14(void);
-Response* p15(void);
-Response* p16(void);
-Response* p17(void);
-Response* p18(void);
-Response* p19(void);
-Response* p20(void);
-Response* p21(void);
-Response* p22(void);
+Response *p1(void);
 
-Response* p67(void);
+Response *p2(void);
+
+Response *p3(void);
+
+Response *p4(void);
+
+Response *p5(void);
+
+Response *p6(void);
+
+Response *p7(void);
+
+Response *p8(void);
+
+Response *p9(void);
+
+Response *p10(void);
+
+Response *p11(void);
+
+Response *p12(void);
+
+Response *p13(void);
+
+Response *p14(void);
+
+Response *p15(void);
+
+Response *p16(void);
+
+Response *p17(void);
+
+Response *p18(void);
+
+Response *p19(void);
+
+Response *p20(void);
+
+Response *p21(void);
+
+Response *p22(void);
+
+Response *p67(void);
 
 #endif // __PROBLEMS_H__

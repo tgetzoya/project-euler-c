@@ -5,6 +5,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdint.h>
 
 typedef struct {
     uint_fast16_t specific_problem;
@@ -13,8 +14,10 @@ typedef struct {
     bool write_to_file;
 } Config;
 
-Config* get_config(void);
+Config *get_config(void);
+
 void init_config(const Config *cfg);
+
 void free_config(void);
 
-#endif // config.h
+#endif // CONFIG_H

@@ -42,19 +42,19 @@ uint_fast32_t ensure_path_exists(const char *path) {
 
             if (create_directory(path_copy) != 0) {
                 // If error other than directory exists, fail
-                #if defined(_WIN32) || defined(_WIN64)
-                    if (GetLastError() != ERROR_ALREADY_EXISTS) {
-                        perror("mkdir failed");
-                        free(path_copy);
-                        return -1;
-                    }
-                #else
-                    if (errno != EEXIST) {
-                        perror("mkdir failed");
-                        free(path_copy);
-                        return -1;
-                    }
-                #endif
+#if defined(_WIN32) || defined(_WIN64)
+                if (GetLastError() != ERROR_ALREADY_EXISTS) {
+                    perror("mkdir failed");
+                    free(path_copy);
+                    return -1;
+                }
+#else
+                if (errno != EEXIST) {
+                    perror("mkdir failed");
+                    free(path_copy);
+                    return -1;
+                }
+#endif
             }
             path_copy[i] = saved;
         }
@@ -68,7 +68,7 @@ uint_fast32_t ensure_path_exists(const char *path) {
 uint16_t read_file(const char *path, const char *file_name, char ***lines_out) {
     char full_path[1000];
     snprintf(full_path, sizeof(full_path), "%s/%s", path, file_name);
-    
+
     FILE *file = fopen(full_path, "rb");
     if (!file) {
         perror("read_file could not open file");
@@ -81,7 +81,7 @@ uint16_t read_file(const char *path, const char *file_name, char ***lines_out) {
     uint16_t line_count = 0;
     uint16_t capacity = 8;
 
-    char **lines = malloc(sizeof(char*) * capacity);
+    char **lines = malloc(sizeof(char *) * capacity);
     if (!lines) {
         perror("malloc failed");
         fclose(file);
@@ -95,7 +95,7 @@ uint16_t read_file(const char *path, const char *file_name, char ***lines_out) {
 
         if (line_count >= capacity) {
             capacity *= 2;
-            char **tmp = realloc(lines, sizeof(char*) * capacity);
+            char **tmp = realloc(lines, sizeof(char *) * capacity);
             if (!tmp) {
                 perror("realloc failed");
                 break;
@@ -122,13 +122,13 @@ uint16_t read_file(const char *path, const char *file_name, char ***lines_out) {
 
 void write_json_to_file(const char *path, const char *content) {
     FILE *file = fopen(path, "wb+");
-    
+
     if (!file) {
         perror("Failed to open file");
         return;
     }
 
     fputs(content, file);
-    
+
     fclose(file);
 }

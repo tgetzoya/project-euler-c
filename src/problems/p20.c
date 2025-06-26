@@ -1,10 +1,10 @@
 #include "problems.h"
 
 
-Response* p20(void) {
+Response *p20(void) {
     const uint_fast16_t EXPECTED = 648;
     uint_fast16_t count = 0;
-    
+
     mpz_t result;
     mpz_init(result);
 
@@ -21,7 +21,7 @@ Response* p20(void) {
 
     free(str);
     mpz_clear(result);
-    
+
     clock_gettime(CLOCK_MONOTONIC, &end);
 
     return response_init(count, EXPECTED, count == EXPECTED, start, end);

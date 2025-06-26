@@ -1,6 +1,7 @@
 #include "response.h"
 
-Response* response_init(uint_fast64_t calculated, uint_fast64_t expected, bool met, struct timespec start, struct timespec end) {
+Response *
+response_init(uint_fast64_t calculated, uint_fast64_t expected, bool met, struct timespec start, struct timespec end) {
     Response *response = (Response *) malloc(sizeof(Response));
 
     uint_fast64_t seconds = end.tv_sec - start.tv_sec;
@@ -26,10 +27,10 @@ void response_free(Response *response) {
     free(response);
 }
 
-Response* static_response_fail(void) {
+Response *static_response_fail(void) {
     struct timespec start, end;
     clock_gettime(CLOCK_MONOTONIC, &start);
     clock_gettime(CLOCK_MONOTONIC, &end);
-    
+
     return response_init(0, 1, false, start, end);
 }

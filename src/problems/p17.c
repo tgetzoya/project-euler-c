@@ -1,8 +1,8 @@
 #include "problems.h"
 
-char* number_to_word (uint_fast16_t number);
+char *number_to_word(uint_fast16_t number);
 
-Response* p17(void) {
+Response *p17(void) {
     const uint_fast16_t EXPECTED = 21124;
     size_t sum = 0;
     char *number_as_word;
@@ -21,44 +21,44 @@ Response* p17(void) {
     return response_init(sum, EXPECTED, sum == EXPECTED, start, end);
 }
 
-char* number_to_word (uint_fast16_t number) {
+char *number_to_word(uint_fast16_t number) {
     static const char *singles[] = {
-        "",
-        "one",
-        "two",
-        "three",
-        "four",
-        "five",
-        "six",
-        "seven",
-        "eight",
-        "nine"
+            "",
+            "one",
+            "two",
+            "three",
+            "four",
+            "five",
+            "six",
+            "seven",
+            "eight",
+            "nine"
     };
 
     static const char *teens[] = {
-        "ten",
-        "eleven",
-        "twelve",
-        "thirteen",
-        "fourteen",
-        "fifteen",
-        "sixteen",
-        "seventeen",
-        "eighteen",
-        "nineteen"
+            "ten",
+            "eleven",
+            "twelve",
+            "thirteen",
+            "fourteen",
+            "fifteen",
+            "sixteen",
+            "seventeen",
+            "eighteen",
+            "nineteen"
     };
 
     static const char *tens[] = {
-        "",
-        "",
-        "twenty",
-        "thirty",
-        "forty",
-        "fifty",
-        "sixty",
-        "seventy",
-        "eighty",
-        "ninety"
+            "",
+            "",
+            "twenty",
+            "thirty",
+            "forty",
+            "fifty",
+            "sixty",
+            "seventy",
+            "eighty",
+            "ninety"
     };
 
 

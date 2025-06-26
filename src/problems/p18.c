@@ -1,20 +1,20 @@
 #include "problems.h"
 
 
-Response* p18(void) {
+Response *p18(void) {
     const uint_fast16_t EXPECTED = 1074;
     uint_fast16_t max_total = 0;
 
-    char ** lines;
+    char **lines;
     char **row;
 
     uint_fast64_t **int_array;
     uint_fast64_t *int_row;
 
-    int count = 0;
-    
+    uint_fast16_t count = 0;
+
     Config *config = get_config();
-    
+
     if (config->base_file_path == NULL) {
         perror("No base file path given");
         return static_response_fail();
@@ -25,7 +25,7 @@ Response* p18(void) {
 
     uint16_t line_count = read_file(config->base_file_path, "p18.txt", &lines);
 
-    int_array = calloc(line_count, sizeof(uint_fast64_t *));
+    int_array = calloc(line_count, sizeof(uint_fast64_t * ));
     if (!int_array) {
         fprintf(stderr, "Failed to allocate memory for int_array.\n");
         return response_init(0, EXPECTED, false, start, start);

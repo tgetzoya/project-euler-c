@@ -8,19 +8,24 @@
 #include <errno.h>
 
 #if defined(_WIN32) || defined(_WIN64)
-    #include <windows.h>
-    #include <direct.h>  // For mkdir
-    #define PATH_SEPARATOR '\\'
+#include <windows.h>
+#include <direct.h>  // For mkdir
+#define PATH_SEPARATOR '\\'
 #else
-    #include <sys/stat.h>
-    #include <sys/types.h>
-    #include <unistd.h>
-    #define PATH_SEPARATOR '/'
+
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <unistd.h>
+
+#define PATH_SEPARATOR '/'
 #endif
 
 uint_fast32_t create_directory(const char *path);
+
 uint_fast32_t ensure_path_exists(const char *path);
+
 uint16_t read_file(const char *path, const char *file_name, char ***lines);
+
 void write_json_to_file(const char *path, const char *content);
 
 #endif
